@@ -8,6 +8,8 @@ TrackApp::Application.routes.draw do
 
   root 'static_pages#index'
 
+  resources :goals, only: [:index]
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
