@@ -8,7 +8,7 @@ TrackApp::Application.routes.draw do
 
   root 'static_pages#index'
 
-  resources :goals, only: [:index]
+  resources :goals, only: [:index, :new, :create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

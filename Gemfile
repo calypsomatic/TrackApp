@@ -30,6 +30,9 @@ gem 'jbuilder', '~> 1.2'
 # for making users
 gem 'devise'
 
+#for making forms
+gem 'simple_form'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -43,6 +46,10 @@ end
 group :test do
 	gem 'shoulda'
 	gem 'capybara'
+end
+
+group :development do
+	gem 'launchy'
 end
 
 # Use ActiveModel has_secure_password

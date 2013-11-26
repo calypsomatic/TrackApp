@@ -3,6 +3,10 @@ class GoalsController < ApplicationController
 
 
 	def index
-		@goals = current_user.goals
+		#@goals = current_user.goals
+	end
+
+	def new
+		@goal = Goal.new
 	end
 end
