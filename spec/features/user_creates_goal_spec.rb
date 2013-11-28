@@ -15,7 +15,7 @@ feature 'User creates a goal' do
 		fill_in 'Password', with: user.password
 		click_button 'Sign in'
 		click_link 'Create new goal'
-		expect(page).to have_content('objective')
+		expect(page).to have_content('Objective')
 	end
 	scenario 'User sees new goal' do
 		Warden.test_mode!
@@ -24,7 +24,6 @@ feature 'User creates a goal' do
 		visit new_goal_path
 		fill_in 'Objective', with: 'objective'
 		prev_goals = Goal.count
-		save_and_open_page
 		click_button 'Create Goal'
 		expect(page).to have_content('Goal created')
 		expect(Goal.count).to be >(prev_goals)
