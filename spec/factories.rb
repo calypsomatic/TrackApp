@@ -4,5 +4,11 @@ FactoryGirl.define do
 		password 					"morethan8characters"
 		password_confirmation	"morethan8characters"
 	end
+
+	factory :goal do
+		objective "Thing to do"
+		weekly_frequency 5
+		user
+	end
 	
 end

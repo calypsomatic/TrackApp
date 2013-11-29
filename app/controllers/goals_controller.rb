@@ -3,7 +3,7 @@ class GoalsController < ApplicationController
 
 
 	def index
-		#@goals = current_user.goals
+		@goals = current_user.goals
 	end
 
 	def new
@@ -23,6 +23,6 @@ class GoalsController < ApplicationController
 	private
 
 	def goals_params
-		params.require(:goal).permit(:objective)
+		params.require(:goal).permit(:objective, :weekly_frequency, :weekly_quantity)
 	end
 end
