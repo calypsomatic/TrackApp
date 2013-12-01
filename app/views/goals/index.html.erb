@@ -1,5 +1,9 @@
 <%= link_to('Create new goal', new_goal_path) %>
-<%- @goals.each do |goal| %>
-	<%= goal.objective %>
-	<%= goal.weekly_frequency %>
-<%- end %>
+<h3>Goals</h3>
+<ul>
+  <%- @goals.each do |goal| %>
+    <li>
+      <%= goal.objective %>
+    </li>
+  <%- end %>
+</ul>

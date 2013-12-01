@@ -1,0 +1,6 @@
+<h3><%= @goal.objective %></h3>
+<%- if @goal.weekly_frequency.present? %>
+  <%= "#{@goal.weekly_frequency} times a week" %>
+<%- else %>
+  <%= "#{@goal.weekly_quantity} per week" %>
+<%- end %>

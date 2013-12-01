@@ -17,10 +17,9 @@
 development:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: TrackApp_development
   pool: 5
-  username: TrackApp
-  password: redsweater
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -46,15 +45,13 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: TrackApp_test
   pool: 5
-  username: TrackApp
-  password: redsweater
 
 production:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: TrackApp_production
   pool: 5
-  username: TrackApp
-  password: redsweater
