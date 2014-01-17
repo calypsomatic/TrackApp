@@ -3,7 +3,7 @@
 <ul>
   <%- @goals.each do |goal| %>
     <li>
-      <%= goal.objective %>
+      <%= link_to "%{goal}" % {:goal => goal.objective}, goal_path(goal) %>
     </li>
   <%- end %>
 </ul>

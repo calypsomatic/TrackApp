@@ -9,6 +9,7 @@ end
 
 class Goal < ActiveRecord::Base
 	belongs_to :user, inverse_of: :goals
+	has_many :datapoints
 	validates :weekly_frequency, numericality: true, allow_blank: true
 	validates :weekly_quantity, numericality: true, allow_blank: true
 	validates_with EitherWeekly

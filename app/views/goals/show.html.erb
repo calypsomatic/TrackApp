@@ -4,3 +4,8 @@
 <%- else %>
   <%= "#{@goal.weekly_quantity} per week" %>
 <%- end %>
+<%= link_to "Add data", new_goal_datapoint_path(@goal) %>
+
+<p><%= link_to 'Home', root_path %></p>
+<p><%= link_to 'Your goals', goals_path %></p>
+<%= link_to 'Create new goal', new_goal_path %>

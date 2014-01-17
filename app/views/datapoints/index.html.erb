@@ -1,0 +1,31 @@
+<h1>Listing datapoints</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Goal</th>
+      <th>Amount</th>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @datapoints.each do |datapoint| %>
+      <tr>
+        <td><%= datapoint.goal_id %></td>
+        <td><%= datapoint.amount %></td>
+        <td><%= datapoint.date %></td>
+        <td><%= link_to 'Show', datapoint %></td>
+        <td><%= link_to 'Edit', edit_datapoint_path(datapoint) %></td>
+        <td><%= link_to 'Destroy', datapoint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Datapoint', new_datapoint_path %>
