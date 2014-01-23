@@ -4,6 +4,7 @@
   <%- @goals.each do |goal| %>
     <li>
       <%= link_to "%{goal}" % {:goal => goal.objective}, goal_path(goal) %>
+      <%= "#{goal.last_week_of_data} this week" %>
     </li>
   <%- end %>
 </ul>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107040730) do
+ActiveRecord::Schema.define(version: 20140117160033) do
 
   create_table "data_points", force: true do |t|
     t.integer  "moment_id"
@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20140107040730) do
   create_table "datapoints", force: true do |t|
     t.integer  "goal_id"
     t.integer  "amount"
-    t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "date"
   end
 
   create_table "goals", force: true do |t|

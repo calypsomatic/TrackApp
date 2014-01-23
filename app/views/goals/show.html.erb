@@ -1,9 +1,32 @@
+<% freq = @goal.weekly_frequency.present? %>
 <h3><%= @goal.objective %></h3>
-<%- if @goal.weekly_frequency.present? %>
+<%- if freq %>
   <%= "#{@goal.weekly_frequency} times a week" %>
 <%- else %>
-  <%= "#{@goal.weekly_quantity} per week" %>
+  <%= "#{@goal.weekly_quantity} minutes per week" %>
 <%- end %>
+
+<h4>Datapoints</h4>
+<p>
+<% @goal.datapoints.each do |datapoint| %>
+  <p><%= datapoint.date.strftime("%-m/%-d/%y") %>
+  : 
+  <%= datapoint.amount %></p>
+<% end %>
+
+<%= "Your total so far this week is: #{@goal.last_week_of_data}" %>
+<p>
+<% if @goal.met_this_week? %>
+  <%= "You have met your goal this week" %>
+<% else %>
+  <% if freq %>
+    <% gap = @goal.weekly_frequency - @goal.last_week_of_data %>
+  <% else %>
+    <% gap = @goal.weekly_quantity - @goal.last_week_of_data %>
+  <% end %>
+  <%= "You need to do #{gap} today to meet your goal" %>
+<% end %>
+</p>
 <%= link_to "Add data", new_goal_datapoint_path(@goal) %>
 
 <p><%= link_to 'Home', root_path %></p>
