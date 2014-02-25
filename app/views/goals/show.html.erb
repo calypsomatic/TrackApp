@@ -1,4 +1,9 @@
 <% freq = @goal.weekly_frequency.present? %>
+<% if freq %>
+  <% unit = "times" %>
+<% else %>
+  <% unit = "minutes" %>
+<% end %>
 <h3><%= @goal.objective %></h3>
 <%- if freq %>
   <%= "#{@goal.weekly_frequency} times a week" %>
@@ -19,15 +24,12 @@
 <% if @goal.met_this_week? %>
   <%= "You have met your goal this week" %>
 <% else %>
-  <% if freq %>
-    <% gap = @goal.weekly_frequency - @goal.last_week_of_data %>
-  <% else %>
-    <% gap = @goal.weekly_quantity - @goal.last_week_of_data %>
-  <% end %>
-  <%= "You need to do #{gap} today to meet your goal" %>
+  <%= "You need to #{@goal.objective} #{@goal.gap} #{unit} today to meet your goal" %>
 <% end %>
 </p>
 <%= link_to "Add data", new_goal_datapoint_path(@goal) %>
+<%= link_to "Edit goal", edit_goal_path(@goal) %>
+<%= button_to "Destroy goal", goal_path(@goal), method: :delete, data: { confirm: "Delete this goal?" }  %>
 
 <p><%= link_to 'Home', root_path %></p>
 <p><%= link_to 'Your goals', goals_path %></p>

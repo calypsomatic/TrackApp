@@ -24,10 +24,32 @@ class GoalsController < ApplicationController
 		@goal = current_user.goals.find(goal_params[:id])
 	end
 
+	def edit
+		@goal = current_user.goals.find(goal_params[:id])
+	end
+
+	def update
+		@goal = current_user.goals.find(goal_params[:id])
+		respond_to do |format|
+			if @goal.update(goals_params)
+				format.html { redirect_to goal_path(@goal), notice: "Goal was updated" }
+			else
+				format.html { render 'edit' }
+			end
+		end
+	end
+
+	def destroy
+		Goal.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_to goals_path }
+    end
+	end
+
 	private
 
 	def goals_params
-		params.require(:goal).permit(:objective, :weekly_frequency, :weekly_quantity)
+		params.require(:goal).permit(:objective, :weekly_frequency, :weekly_quantity, :weight)
 	end
 
 	def goal_params

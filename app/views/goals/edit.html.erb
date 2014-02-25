@@ -1,0 +1,12 @@
+<h1>Update goal</h1>
+
+
+<%= simple_form_for(@goal) do |form| %>
+  <%= form.input :objective %>
+  <%= form.input :weekly_frequency %>
+  <%= form.input :weekly_quantity %>
+  <%= form.input :weight, default: 1.0 %>
+  <%= form.button :submit %>
+<% end %>
+
+<%= link_to 'Back', goal_path(@goal) %>

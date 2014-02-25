@@ -9,7 +9,7 @@ TrackApp::Application.routes.draw do
 
   root 'static_pages#index'
 
-  resources :goals, only: [:index, :new, :create, :show] do
+  resources :goals, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :datapoints
   end
 

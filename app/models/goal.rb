@@ -12,6 +12,7 @@ class Goal < ActiveRecord::Base
 	has_many :datapoints
 	validates :weekly_frequency, numericality: true, allow_blank: true
 	validates :weekly_quantity, numericality: true, allow_blank: true
+	validates :weight, numericality: true, allow_blank: false
 	validates_with EitherWeekly
 
 	def last_week_of_data
@@ -31,6 +32,37 @@ class Goal < ActiveRecord::Base
 			return self.last_week_of_data >= self.weekly_frequency
 		end
 	end
+
+	def gap
+		if self.weekly_quantity.present?
+			return self.weekly_quantity - self.last_week_of_data
+		else
+			return self.weekly_frequency - self.last_week_of_data
+		end
+	end
+
+	class << self
+		def score (user)
+			running_score = 0
+			user.goals.each do |goal|
+				running_score += goal.last_week_of_data*goal.weight
+			end
+			running_score
+		end
+
+		def target_score (user)
+			target = 0
+			user.goals.each do |goal|
+				if goal.weekly_frequency.present?
+        	target += goal.weekly_frequency*goal.weight
+      	else
+        	target += goal.weekly_quantity*goal.weight
+      	end
+			end
+			target
+		end
+	end
+
 end
 
 

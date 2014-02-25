@@ -6,11 +6,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Track App", '#'%>
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
-<%= yield %>
+<div>
+  <%= yield %>
+</div>
 
 </body>
 </html>

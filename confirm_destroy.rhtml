@@ -1,0 +1,9 @@
+<% title 'Confirm Destroy Goal', false %>
+
+<% simple_form_for :goal, :url => goal_path(@goal), :html => {method: :delete} do |form| %>
+  <h4> Destroy this for reals?</h4>
+  <p>
+    <%= submit_tag "DESTROY" %>
+    or <%= link_to "cancel", goals_path %>
+  </p>
+<% end %>
