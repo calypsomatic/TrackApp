@@ -4,19 +4,29 @@
 <% else %>
   <% unit = "minutes" %>
 <% end %>
-<h3><%= @goal.objective %></h3>
-<%- if freq %>
+<h1><%= @goal.objective %></h1>
+<center><%- if freq %>
   <%= "#{@goal.weekly_frequency} times a week" %>
 <%- else %>
   <%= "#{@goal.weekly_quantity} minutes per week" %>
 <%- end %>
-
+<p>
+<font size="1"><%= "(worth #{@goal.weight} points)" %></font>
+</p>
+</center>
 <h4>Datapoints</h4>
 <p>
 <% @goal.datapoints.each do |datapoint| %>
   <p><%= datapoint.date.strftime("%-m/%-d/%y") %>
   : 
-  <%= datapoint.amount %></p>
+  <%= datapoint.amount %>
+  <font size="2">
+  <%= link_to "Edit datapoint", edit_goal_datapoint_path(@goal, datapoint) %> 
+  <div class="button">
+  <%= button_to "Delete datapoint", goal_datapoint_path(@goal, datapoint), method: :delete %>
+  </div>
+  </font>
+  </p>
 <% end %>
 
 <%= "Your total so far this week is: #{@goal.last_week_of_data}" %>
@@ -30,7 +40,3 @@
 <%= link_to "Add data", new_goal_datapoint_path(@goal) %>
 <%= link_to "Edit goal", edit_goal_path(@goal) %>
 <%= button_to "Destroy goal", goal_path(@goal), method: :delete, data: { confirm: "Delete this goal?" }  %>
-
-<p><%= link_to 'Home', root_path %></p>
-<p><%= link_to 'Your goals', goals_path %></p>
-<%= link_to 'Create new goal', new_goal_path %>
