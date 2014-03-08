@@ -1,0 +1,13 @@
+  <div class="nested-fields row">
+    <div class="span3">
+      <%= f.label :amount, nil%>
+      <%= f.text_field :amount %>
+    </div>
+    <div class="span3">
+      <%= f.label :date, nil%>
+       <%= f.date_field :date %>
+    </div>
+    <div class="span2">
+      <%= link_to_remove_association "remove data", f, html_options = {class: "btn btn-small"} %>
+    </div>
+  </div>

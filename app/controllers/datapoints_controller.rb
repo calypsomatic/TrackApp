@@ -20,6 +20,8 @@ class DatapointsController < ApplicationController
 
   # GET /datapoints/1/edit
   def edit
+    @datapoint = Datapoint.find(params[:id])
+    @goal = @datapoint.goal
   end
 
   # POST /datapoints

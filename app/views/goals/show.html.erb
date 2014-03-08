@@ -15,19 +15,19 @@
 </p>
 </center>
 <h4>Datapoints</h4>
-<p>
-<% @goal.datapoints.each do |datapoint| %>
-  <p><%= datapoint.date.strftime("%-m/%-d/%y") %>
-  : 
-  <%= datapoint.amount %>
-  <font size="2">
-  <%= link_to "Edit datapoint", edit_goal_datapoint_path(@goal, datapoint) %> 
-  <div class="button">
-  <%= button_to "Delete datapoint", goal_datapoint_path(@goal, datapoint), method: :delete %>
+
+<%= form_for @goal, class: "form-inline" do |f| %>
+  <div id="datapoints">
+    <%= f.fields_for :datapoints do |builder| %>
+      <%= render 'datapoint_fields', :f => builder %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add data', f, :datapoints %>
+     </div>
   </div>
-  </font>
-  </p>
+  <%= f.submit "Submit" %>
 <% end %>
+
 
 <%= "Your total so far this week is: #{@goal.last_week_of_data}" %>
 <p>

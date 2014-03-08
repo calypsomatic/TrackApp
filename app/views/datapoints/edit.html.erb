@@ -1,5 +1,9 @@
 <h1>Editing datapoint</h1>
 
-<%= render 'form' %>
+<%= simple_form_for [@goal, @datapoint] do |form| %>
+  <%= form.input :amount %>
+  <%= form.input :date %>
+  <%= form.button :submit, label: "submit" %>
+<%- end %>
 
-<%= link_to 'Show', @datapoint %>
+<%= link_to 'Back', goal_path(@goal) %>

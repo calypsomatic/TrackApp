@@ -9,7 +9,8 @@ end
 
 class Goal < ActiveRecord::Base
 	belongs_to :user, inverse_of: :goals
-	has_many :datapoints
+	has_many :datapoints, :dependent => :destroy
+	accepts_nested_attributes_for :datapoints, :reject_if => :all_blank, :allow_destroy => true
 	validates :weekly_frequency, numericality: true, allow_blank: true
 	validates :weekly_quantity, numericality: true, allow_blank: true
 	validates :weight, numericality: true, allow_blank: false

@@ -49,7 +49,8 @@ class GoalsController < ApplicationController
 	private
 
 	def goals_params
-		params.require(:goal).permit(:objective, :weekly_frequency, :weekly_quantity, :weight)
+		params.require(:goal).permit(:objective, :weekly_frequency, :weekly_quantity, :weight,
+			datapoints_attributes: [:id, :date, :amount, :_destroy])
 	end
 
 	def goal_params

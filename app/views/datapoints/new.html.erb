@@ -6,4 +6,14 @@
   <%= form.button :submit, label: "submit" %>
 <%- end %>
 
+<%= simple_form_for @goal do |f| %>
+  <%= f.simple_fields_for :datapoints do |builder| %>
+    <%= render 'datapoint_fields', :f => builder %>
+    <div class="links">
+      <%= link_to_add_association 'add data', f, :datapoints %>
+    </div>
+  <% end %>
+  <%= f.submit "Submit" %>
+<% end %>
+
 <%= link_to 'Back', goal_path(@goal) %>
