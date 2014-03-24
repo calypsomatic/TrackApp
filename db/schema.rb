@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124022540) do
-
-  create_table "data_points", force: true do |t|
-    t.integer  "moment_id"
-    t.integer  "amount"
-    t.datetime "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140313225805) do
 
   create_table "datapoints", force: true do |t|
     t.integer  "goal_id"

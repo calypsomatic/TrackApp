@@ -1,28 +1,19 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This TrackApp is a toy application developed as a learning project.
 
-Things you may want to cover:
+TrackApp keeps track of activities the user wishes to perform regularly. 
+Each goal can be measured by either time spent or number of instances per
+week.  The user can enter the target number and a weight that indicates 
+how valuable each unit of the goal is.  A total score over all goals for
+the most recent rolling week is calculated.
 
-* Ruby version
+For example, if I want to make sure I spend 2 hours a week studying, I
+would choose a weekly quantity of 120; but since each minute is not particularly
+valuable, I might weight it by 0.05.  Then achieving my goal for a week would
+result in 6 points.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Alternatively, if I wanted to exercise 3 times a week, I would choose a 
+weekly frequency of 3.  But since each exercise session is important, I 
+would choose a heavier weight, perhaps 3.  Achieving this goal would then
+result in 9 points per week.  
