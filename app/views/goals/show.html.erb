@@ -28,7 +28,6 @@
   <%= f.submit "Submit" %>
 <% end %>
 
-
 <h4><%= "Your total so far this week is: #{@goal.last_week_of_data}" %>
 <p>
 <% if @goal.met_this_week? %>
@@ -38,6 +37,5 @@
 <% end %>
 </p>
 </h4>
-<%= link_to "Add data", new_goal_datapoint_path(@goal) %>
 <%= link_to "Edit goal", edit_goal_path(@goal) %>
 <%= button_to "Destroy goal", goal_path(@goal), method: :delete, data: { confirm: "Delete this goal?" }  %>

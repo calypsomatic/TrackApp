@@ -7,10 +7,13 @@
       <%= link_to "%{goal}" % {:goal => goal.objective}, goal_path(goal) %>
       <% if goal.weekly_frequency.present? %>
         <% unit = "times" %>
+        <% amount = goal.weekly_frequency %>
       <% else %>
         <% unit = "minutes" %>
+        <% amount = goal.weekly_quantity %>
       <% end %>
-      <%= "#{goal.last_week_of_data} #{unit} this week (#{goal.last_week_of_data*goal.weight} points)" %>
+      <%= "#{goal.last_week_of_data}/#{amount} #{unit} this week 
+          (#{goal.last_week_of_data*goal.weight}/#{goal.target_score} points)" %>
     </li>
   <%- end %>
 </ul>
@@ -19,4 +22,5 @@
 <p>
 <%= "Your target score is #{Goal.target_score(current_user)}" %>
 </p>
+<%= "You have a bonus of #{Goal.bonus_score(current_user)}" %>
 

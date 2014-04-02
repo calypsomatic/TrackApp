@@ -41,7 +41,7 @@ describe Goal do
 		datapoint3 = FactoryGirl.create(:datapoint, goal: goal2, date: Date.yesterday-8, amount: 1)
 		expect(Goal.score(user)).to eq(3)
 	end
-	it 'calculates target score' do
+	it 'calculates total target score' do
 		user = FactoryGirl.create(:user)
 		goal1 = FactoryGirl.create(:goal, weekly_frequency: 7, user: user, weight: 2)
 		goal2 = FactoryGirl.create(:goal, weekly_frequency: nil, weekly_quantity: 20, user: user)
@@ -53,8 +53,19 @@ describe Goal do
 		datapoint = FactoryGirl.create(:datapoint, goal: goal, date: Date.today, amount: 2)
 		expect(goal.gap).to eq(3)
 	end
-
-	#it should have a table of data points
-	#this could be a calendar
+	it 'calculates total bonus score' do
+		user = FactoryGirl.create(:user)
+		goal1 = FactoryGirl.create(:goal, user: user)
+		goal2 = FactoryGirl.create(:goal, user: user)
+		datapoint1 = FactoryGirl.create(:datapoint, goal: goal1, date: Date.today, amount: 7)
+		datapoint2 = FactoryGirl.create(:datapoint, goal: goal2, date: Date.today, amount: 7)
+		datapoint3 = FactoryGirl.create(:datapoint, goal: goal2, date: Date.today-9, amount:5)
+		expect(Goal.bonus_score(user)).to eq(4)
+	end	
+	it 'calculate individual goal target score' do
+		user = FactoryGirl.create(:user)
+		goal = FactoryGirl.create(:goal, user: user)
+		expect(goal.target_score).to eq(5)
+	end
 
 end

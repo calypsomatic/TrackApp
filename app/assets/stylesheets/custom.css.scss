@@ -78,3 +78,16 @@ footer ul li {
   float: left;
   margin-left: 10px;
 }
+
+/* header */
+nav li {
+  color: #999999;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  float: none;
+  text-decoration: none;
+  text-align: -webkit-match-parent;
+  line-height: 20px;
+  list-style: none;
+  /*padding: 10px 15px 10px;*/
+  display: block;
+}

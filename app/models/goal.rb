@@ -42,6 +42,14 @@ class Goal < ActiveRecord::Base
 		end
 	end
 
+	def target_score
+		if self.weekly_quantity.present?
+			return self.weekly_quantity*self.weight
+		else
+			return self.weekly_frequency*self.weight
+		end
+	end
+
 	class << self
 		def score (user)
 			running_score = 0
@@ -62,6 +70,16 @@ class Goal < ActiveRecord::Base
 			end
 			target
 		end
+
+		def bonus_score (user)
+			bonus = score(user) - target_score(user)
+			if bonus > 0
+				bonus
+			else
+				0
+			end
+		end
+
 	end
 
 end

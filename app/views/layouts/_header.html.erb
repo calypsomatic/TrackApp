@@ -5,7 +5,12 @@
       <nav>
         <ul class="nav pull-right">
           <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Sign in", new_user_session_path %></li>
+          <% if current_user.present? %>
+            <li><%= "Signed in as #{current_user.email}" %></li>
+            <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign in", new_user_session_path %></li>
+          <% end %>          
         </ul>
       </nav>
     </div>
